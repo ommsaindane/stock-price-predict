@@ -207,3 +207,58 @@ The UI automatically loads runtime artifacts and displays an actionable error if
 - Close is preserved for price reconstruction and evaluation context.
 - All train/test operations preserve chronological ordering.
 - Inference uses the same feature/scaling contract as training.
+
+## Development Journey & Key Challenges
+
+### Initial Approach (Failed)
+
+The initial implementation modeled **absolute stock prices** using MinMaxScaler.
+
+It resulted in strong evaluation metrics on the test set but complete failure during live inference
+
+**Root issue:**
+- Training scaler max < real-world price range
+- New prices exceeded scaler bounds as inputs saturated at 1.0 and clipped the output.
+- Model received constant input. Hence, produced unrealistic predictions (price explosion)
+
+---
+
+### Attempts to Fix
+
+Several approaches were tested:
+
+- Re-fitting scaler on full dataset
+- Trying different scalers (MinMaxScaler, StandardScaler)
+- Adjusting train/test splits
+
+These mitigated symptoms but did **not solve the root problem**.
+
+---
+
+### Final Solution (Correct Fix)
+
+The pipeline was redesigned to predict **returns instead of prices**:
+
+- return = Close.pct_change()
+- Model predicts next-day return
+- Price reconstructed using:
+  predicted_price = last_price * (1 + predicted_return)
+
+---
+
+### Outcome
+
+- Eliminated scaling failures completely
+- Stable inference (no explosions)
+- Slight drop in directional accuracy, but:
+  - System became **correct and production-safe**
+
+---
+
+### Key Insight
+
+> Stock prices are non-stationary.  
+> Modeling absolute values with bounded scaling is fundamentally flawed.
+
+Correct approach:
+> Model relative changes (returns), not absolute levels.
