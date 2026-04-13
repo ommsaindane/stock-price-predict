@@ -209,7 +209,7 @@ The UI automatically loads runtime artifacts and displays an actionable error if
 - All train/test operations preserve chronological ordering.
 - Inference uses the same feature/scaling contract as training.
 
-## Development Journey & Key Challenges
+## Development Journey and Key Challenges
 
 ### Initial Approach (Failed)
 
