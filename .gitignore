@@ -14,3 +14,7 @@ wheels/
 notebooks/data/*
 data/*
 models/*
+
+# Streamlit local files
+.streamlit/secrets.toml
+.streamlit/cache/
