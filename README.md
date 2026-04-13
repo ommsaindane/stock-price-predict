@@ -14,6 +14,7 @@ The system is designed to be deterministic and fail-fast for invalid states: it 
 - [Run Streamlit UI](#run-streamlit-ui)
 - [Key Output Files](#key-output-files)
 - [Notes](#notes)
+- [Development Journey & Key Challenges](#Development-Journey-&-Key-Challenges)
 
 ## What Has Been Implemented
 
