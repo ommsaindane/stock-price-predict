@@ -4,6 +4,8 @@ An end-to-end stock forecasting project that models next-day returns with Tensor
 
 The system is designed to be deterministic and fail-fast for invalid states: it validates data integrity, feature consistency, scaler/model compatibility, and inference sanity checks before returning predictions.
 
+<img width="1769" height="906" alt="Image" src="https://github.com/user-attachments/assets/fd69039b-39be-4f93-b11d-fb92fb51e10b" />
+
 ## Table of Contents
 
 - [What Has Been Implemented](#what-has-been-implemented)
