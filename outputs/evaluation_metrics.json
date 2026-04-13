@@ -1,0 +1,22 @@
+{
+  "returns": {
+    "mse": 0.0003192573528797463,
+    "mae": 0.011818072795851339,
+    "rmse": 0.017867774144524725,
+    "directional_accuracy": 0.5363247863247863,
+    "max_abs_error": 0.11900555436258142
+  },
+  "prices": {
+    "mse": 15.455869963549794,
+    "mae": 2.700132566799862,
+    "rmse": 3.931395421927155,
+    "median_abs_error": 1.7667027690491324,
+    "max_abs_error": 20.771230882805185,
+    "trend_direction_accuracy": 0.5341880341880342
+  },
+  "reconstruction": {
+    "explosion_ratio_threshold": 2.0,
+    "explosion_count": 0,
+    "has_explosions": false
+  }
+}
